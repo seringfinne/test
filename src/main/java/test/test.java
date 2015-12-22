@@ -58,7 +58,12 @@ public class test {
 		//bug_fix
 		//bug_fix2
 		//bug_fix22
+<<<<<<< HEAD
 		//bug_fix222
+=======
+		//based_on_ dev
+		
+>>>>>>> based_on_dev
 
 		
 	}
