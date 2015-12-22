@@ -56,16 +56,7 @@ public class test {
 		byte[] bytes = "hello".getBytes();
 		
 		
-		
-		
-		
-		
-		
-//		String str  = ba.toString();
-//		System.out.println(str);
-//		for (byte b : ba){
-//			System.out.println();
-//		}
+
 		
 	}
 	
