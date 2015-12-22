@@ -55,6 +55,7 @@ public class test {
 		String string = Arrays.toString(ba);		
 		byte[] bytes = "hello".getBytes();
 		
+		//bug_fix
 		
 
 		
