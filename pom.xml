@@ -17,5 +17,13 @@
 				<artifactId>jackson-mapper-lgpl</artifactId>
 				<version>1.7.4</version>	
 		</dependency>
+	
+<dependency>
+   <groupId>com.oracle</groupId>
+   <artifactId>ojdbc14</artifactId>
+   <version>10.2.0.4.0</version>
+   <scope>provided</scope>
+ </dependency>
+
  </dependencies>
 </project>

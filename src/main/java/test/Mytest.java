@@ -1,25 +1,38 @@
 package test;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.lang.reflect.Array;
-import java.nio.CharBuffer;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
+
+
+
+
+import java.util.Date;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
+
 /** 
  * @author luoxuyang 
  * @version 创建时间：2015年12月21日 下午8:17:00 
  * 类说明 
  */
-public class test {
+public class Mytest {
 	
 	public static void main(String[] args) throws JsonProcessingException, IOException {
 		 ObjectMapper Mapper = new ObjectMapper();
@@ -60,8 +73,76 @@ public class test {
 		
 	}
 	//developer
+	@Test
+	public void test_switch(){
+		int channel =1 ;
+		switch(channel){
+		case 0 :
+			System.out.println(0);
+			break;
+		case 997 :
+			System.out.println("wap");
+			break;
+		case 998 :
+			System.out.println("android");
+				break;
+		case 999 :
+			System.out.println("ios");
+			break;
+		default :
+			System.out.println("default");
+			break;
+	}
+		
+		//System.out.println(name.isEmpty());
+	}
+	/**
+	 * 
+	 * @param sql
+	 * @param params
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws ParseException 
+	 */
+@Test
+public void sql() throws ClassNotFoundException, SQLException, ParseException{
+	String sql ="select time_join  from nwd_fund_financial_ext where rownum = 1 ";
+	Class.forName("oracle.jdbc.driver.OracleDriver");
+	Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.168:1521:orcl","nwd","NWD123");
+	 Statement statement = connection.createStatement();
+
+	ResultSet resultSet = statement.executeQuery(sql);
+	while(resultSet.next()){
+		String dateStr = resultSet.getDate(1).toString();
+		System.out.println(dateStr);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date  = sdf.parse(dateStr);
+		String format = sdf.format(date);
+		System.out.println(format);
+	}
 	
 	
+	statement.close();
+	connection.close();
+}
+	
+	@Test
+public void query() throws ClassNotFoundException, SQLException{
+	String sql="select CREATE_TIME from NWD_ACT_WEIXINVC where ROWNUM =1";
 
+	
 
+}
+@SuppressWarnings("deprecation")
+@Test
+public void  dateFormat() throws ParseException{
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+	String strDate = "2015/11/23 13:35:24";
+	Date date=sdf.parse(strDate);
+	
+	
+	System.out.println(date.toString());
+	}	
+	
 }
